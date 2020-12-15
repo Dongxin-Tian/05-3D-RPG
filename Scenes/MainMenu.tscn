@@ -1,0 +1,88 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://Assets/Datalegreya-Thin.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://Scenes/Kaishu.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scripts/QuitButton.gd" type="Script" id=3]
+[ext_resource path="res://Scripts/StartButton.gd" type="Script" id=4]
+[ext_resource path="res://Environment.tres" type="Environment" id=5]
+
+[sub_resource type="DynamicFont" id=1]
+size = 25
+outline_size = 1
+use_filter = true
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 50
+outline_size = 2
+outline_color = Color( 0.47451, 0.47451, 0.47451, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 50
+outline_size = 2
+use_filter = true
+font_data = ExtResource( 1 )
+
+[node name="MainMenu" type="Spatial"]
+
+[node name="StartButton" type="Button" parent="."]
+margin_left = 100.547
+margin_top = 226.903
+margin_right = 401.547
+margin_bottom = 266.903
+custom_fonts/font = SubResource( 1 )
+text = "Start"
+script = ExtResource( 4 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="QuitButton" type="Button" parent="."]
+margin_left = 100.547
+margin_top = 326.0
+margin_right = 401.547
+margin_bottom = 366.0
+custom_fonts/font = SubResource( 1 )
+text = "Quit"
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1.12989, 1.05932, 2.01452 )
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource( 5 )
+
+[node name="Kaishu" parent="." instance=ExtResource( 2 )]
+
+[node name="SpotLight" type="SpotLight" parent="."]
+transform = Transform( 0.965935, 0, -0.258785, 0, 1, 0, 0.258785, 0, 0.965935, -1.7145, 1.87097, 2.83099 )
+light_energy = 16.0
+
+[node name="Label2" type="Label" parent="."]
+margin_left = 166.987
+margin_top = 74.0161
+margin_right = 560.987
+margin_bottom = 124.016
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.47451, 0.47451, 0.47451, 1 )
+text = "Code Name : Kaishu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 159.843
+margin_top = 68.4602
+margin_right = 553.843
+margin_bottom = 118.46
+custom_fonts/font = SubResource( 4 )
+text = "Code Name : Kaishu"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="StartButton" to="StartButton" method="_on_StartButton_pressed"]
+[connection signal="pressed" from="QuitButton" to="QuitButton" method="_on_QuitButton_pressed"]
